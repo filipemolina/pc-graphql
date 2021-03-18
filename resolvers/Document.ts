@@ -1,3 +1,0 @@
-const DocumentResolvers = {};
-
-export { DocumentResolvers };

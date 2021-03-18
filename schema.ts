@@ -51,10 +51,10 @@ const typeDefs = gql`
   type Field {
     id: ID!
     collapsable: Boolean!
-    question: Question!
+    question: ApiQuestion!
     readOnly: Boolean!
     approversEnabled: Boolean
-    equationSections: [Question!]!
+    equationSections: [ApiQuestion!]!
   }
 
   type ApiField {
@@ -70,9 +70,9 @@ const typeDefs = gql`
     id: ID!
     name: String!
     parentMenssage: String!
-    attendeeQuestions: [Question!]!
-    signeeQuestions: [Question!]!
-    organization: Organization!
+    attendeeQuestions: [ApiQuestion!]!
+    signeeQuestions: [ApiQuestion!]!
+    organization: ApiOrganization!
     type: DocumentType!
   }
 
@@ -92,7 +92,7 @@ const typeDefs = gql`
     nameForCommunications: String!
     numberOfStudents: Int
     divisionName: String!
-    documents: [Document!]!
+    documents: [ApiDocument!]!
   }
 
   type ApiOrganization {
@@ -105,8 +105,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    organizations: [ApiOrganization!]!
-    documents(organizationId: ID!): [ApiDocument!]!
+    organizations: [Organization!]!
+    documents(organizationId: ID!): [Document!]!
   }
 `;
 
