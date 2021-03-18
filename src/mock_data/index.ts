@@ -1,4 +1,10 @@
-import { ApiDocument, ApiField, ApiOrganization, ApiQuestion, DocumentType } from '../types';
+import {
+  ApiDocument,
+  ApiField,
+  ApiOrganization,
+  ApiQuestion,
+  DocumentType,
+} from '@src/types';
 
 const organizations: ApiOrganization[] = [
   {

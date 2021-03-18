@@ -1,6 +1,10 @@
-import { mock_data } from '../mock_data';
+import { mock_data } from '@src/mock_data';
 import { Resolvers } from '../types';
-import { getDocumentsByOrganizationId, getOrganizationById, getQuestionsById } from '../utils';
+import {
+  getDocumentsByOrganizationId,
+  getOrganizationById,
+  getQuestionsById,
+} from '../utils';
 
 const QueryResolvers: Resolvers = {
   Query: {
@@ -24,9 +28,17 @@ const QueryResolvers: Resolvers = {
           organizationId: undefined,
           attendeeQuestionIds: undefined,
           signeeQuestionIds: undefined,
-          organization: getOrganizationById(organizations, apiDocument.organizationId),
-          attendeeQuestions: getQuestionsById(questions, apiDocument.attendeeQuestionIds),
-          signeeQuestions: getQuestionsById(questions, apiDocument.signeeQuestionIds),
+          organization:
+            getOrganizationById(organizations, apiDocument.organizationId) ||
+            organizations[0],
+          attendeeQuestions: getQuestionsById(
+            questions,
+            apiDocument.attendeeQuestionIds
+          ),
+          signeeQuestions: getQuestionsById(
+            questions,
+            apiDocument.signeeQuestionIds
+          ),
           __typename: 'Document',
         }));
     },

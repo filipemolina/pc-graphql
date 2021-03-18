@@ -3,7 +3,8 @@ import {
   getOrganizationById,
   getDocumentsByOrganizationId,
 } from './';
-import { mock_data } from '../mock_data';
+import { mock_data } from '@src/mock_data';
+import { ApiQuestion } from '@src/types';
 
 describe('The util function tests for GraphQL server', () => {
   const { questions, documents, organizations } = mock_data;
@@ -18,7 +19,7 @@ describe('The util function tests for GraphQL server', () => {
 
     it("Should return an empty array if invalid ID's are passed", () => {
       const result = getQuestionsById(questions, ['55', '99']);
-      const expected = [];
+      const expected = [] as ApiQuestion[];
 
       expect(result).toEqual(expected);
     });

@@ -1,4 +1,4 @@
-import { ApiDocument, ApiOrganization, ApiQuestion } from '../types';
+import { ApiDocument, ApiOrganization, ApiQuestion } from '@src/types';
 
 const getDocumentsByOrganizationId = (
   documents: ApiDocument[],
@@ -16,7 +16,7 @@ const getOrganizationById = (
     (apiOrganization) => apiOrganization.id === organizationId
   );
 
-  return organization || organizations[0];
+  return organization;
 };
 
 const getQuestionsById = (questions: ApiQuestion[], questionIds: string[]) =>

@@ -16,8 +16,13 @@
     "sourceMap": true,
     "strict": true,
     "typeRoots": ["node_modules/@types", "src/@types"],
+    "baseUrl": "src",
+    "paths": {
+      "@src/*":["*"], 
+    },
   },
+  
   "files": ["src/@types/graphql.d.ts"],
-  "exclude": ["node_modules", "src/**/*.spec.ts"],
+  "exclude": ["node_modules"],
   "include": ["src/**/*.ts"],
 }

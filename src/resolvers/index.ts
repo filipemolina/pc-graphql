@@ -1,5 +1,5 @@
 import { QueryResolvers } from './Query';
-import { Resolvers } from '../types';
+import { Resolvers } from '@src/types';
 
 const resolvers: Resolvers = {
   ...QueryResolvers,
