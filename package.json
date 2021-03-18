@@ -4,7 +4,7 @@
   "description": "GraphQL Server for Permission Click",
   "main": "index.js",
   "scripts": {
-    "start": "yarn generate && ts-node ./index.ts",
+    "start": "yarn generate && ts-node ./src/index.ts",
     "generate": "graphql-codegen",
     "test": "jest"
   },

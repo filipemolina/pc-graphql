@@ -1,6 +1,6 @@
-schema: './schema.ts'
+schema: './src/schema.ts'
 generates:
-  ./types.ts:
+  ./src/types.ts:
     plugins: 
       - typescript
       - typescript-operations
