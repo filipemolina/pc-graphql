@@ -14,8 +14,10 @@
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "typeRoots": ["node_modules/@types", "src/@types"],
   },
+  "files": ["src/@types/graphql.d.ts"],
   "exclude": ["node_modules", "src/**/*.spec.ts"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
 }
