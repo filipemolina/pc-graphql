@@ -1,10 +1,5 @@
-import { mock_data } from '../mock_data';
+import { Resolvers } from '../types';
 
-const OrganizationResolvers = {
-  Organization: {
-    documents: (parent) =>
-      mock_data.documents.filter((document) => document.organizationId === parent.id),
-  },
-};
+const OrganizationResolvers: Resolvers = {};
 
 export { OrganizationResolvers };

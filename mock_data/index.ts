@@ -1,11 +1,13 @@
-const organizations = [
+import { ApiDocument, ApiField, ApiOrganization, ApiQuestion, DocumentType } from '../types';
+
+const organizations: ApiOrganization[] = [
   {
     id: '1',
     name: 'Organization 1',
     nameForCommunications: 'Organization Number One',
     numberOfStudents: 200,
     divisionName: 'Division One',
-    documents: ['1'],
+    documentIds: ['1'],
   },
   {
     id: '2',
@@ -13,7 +15,7 @@ const organizations = [
     nameForCommunications: 'Organization Number Two',
     numberOfStudents: 300,
     divisionName: 'Division Two',
-    documents: ['2'],
+    documentIds: ['2'],
   },
   {
     id: '3',
@@ -21,11 +23,11 @@ const organizations = [
     nameForCommunications: 'Organization Number Three',
     numberOfStudents: 1000,
     divisionName: 'Division Three',
-    documents: ['3'],
+    documentIds: ['3'],
   },
 ];
 
-const questions = [
+const questions: ApiQuestion[] = [
   {
     id: '1',
     name: 'Question One',
@@ -85,14 +87,14 @@ const questions = [
   },
 ];
 
-const fields = [
+const fields: ApiField[] = [
   {
     id: '1',
     collapsable: false,
     questionId: '1',
     readOnly: false,
     approversEnabled: true,
-    equationSections: [],
+    equationSectionIds: [],
   },
   {
     id: '2',
@@ -100,7 +102,7 @@ const fields = [
     questionId: '2',
     readOnly: false,
     approversEnabled: true,
-    equationSections: [],
+    equationSectionIds: [],
   },
   {
     id: '3',
@@ -108,37 +110,37 @@ const fields = [
     questionId: '3',
     readOnly: false,
     approversEnabled: true,
-    equationSections: [],
+    equationSectionIds: [],
   },
 ];
 
-const documents = [
+const documents: ApiDocument[] = [
   {
     id: '1',
     name: 'Form 1',
     parentMenssage: 'Please fill form 1',
     attendeeQuestionIds: ['1', '3'],
-    signeeQuestions: ['2'],
+    signeeQuestionIds: ['2'],
     organizationId: '1',
-    type: 'FORM',
+    type: DocumentType.Form,
   },
   {
     id: '2',
     name: 'Form 2',
     parentMenssage: 'Please fill form 2',
     attendeeQuestionIds: ['2', '3'],
-    signeeQuestions: ['1'],
+    signeeQuestionIds: ['1'],
     organizationId: '2',
-    type: 'PROCESS',
+    type: DocumentType.Process,
   },
   {
     id: '3',
     name: 'Form 3',
     parentMenssage: 'Please fill form 3',
     attendeeQuestionIds: ['1', '2'],
-    signeeQuestions: ['3'],
+    signeeQuestionIds: ['3'],
     organizationId: '3',
-    type: 'FORM_TEMPLATE',
+    type: DocumentType.FormTemplate,
   },
 ];
 

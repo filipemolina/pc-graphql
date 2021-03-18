@@ -24,7 +24,27 @@ const typeDefs = gql`
     sortValueOptions: Boolean!
     pinnedValueOptions: [String!]!
     minEntries: Int
-    MmxEntries: Int
+    maxEntries: Int
+    supportsApprovers: Boolean!
+  }
+
+  type ApiQuestion {
+    id: ID!
+    name: String!
+    isRequired: Boolean!
+    labelText: String!
+    reportingLabel: String!
+    placeHolderText: String!
+    dataValue: String!
+    characterLimit: Int!
+    format: String!
+    valueType: String!
+    valueOptions: [String!]!
+    hidden: Boolean!
+    sortValueOptions: Boolean!
+    pinnedValueOptions: [String!]!
+    minEntries: Int
+    maxEntries: Int
     supportsApprovers: Boolean!
   }
 
@@ -37,6 +57,15 @@ const typeDefs = gql`
     equationSections: [Question!]!
   }
 
+  type ApiField {
+    id: ID!
+    collapsable: Boolean!
+    questionId: String!
+    readOnly: Boolean!
+    approversEnabled: Boolean
+    equationSectionIds: [String!]!
+  }
+
   type Document {
     id: ID!
     name: String!
@@ -44,6 +73,16 @@ const typeDefs = gql`
     attendeeQuestions: [Question!]!
     signeeQuestions: [Question!]!
     organization: Organization!
+    type: DocumentType!
+  }
+
+  type ApiDocument {
+    id: ID!
+    name: String!
+    parentMenssage: String!
+    attendeeQuestionIds: [String!]!
+    signeeQuestionIds: [String!]!
+    organizationId: String!
     type: DocumentType!
   }
 
@@ -56,9 +95,18 @@ const typeDefs = gql`
     documents: [Document!]!
   }
 
+  type ApiOrganization {
+    id: ID!
+    name: String!
+    nameForCommunications: String!
+    numberOfStudents: Int
+    divisionName: String!
+    documentIds: [String!]!
+  }
+
   type Query {
-    organizations: [Organization!]!
-    documents(organizationId: ID!): [Document!]!
+    organizations: [ApiOrganization!]!
+    documents(organizationId: ID!): [ApiDocument!]!
   }
 `;
 
