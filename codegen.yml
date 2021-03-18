@@ -1,0 +1,10 @@
+schema: './schema.ts'
+generates:
+  ./types.ts:
+    plugins: 
+      - typescript
+      - typescript-operations
+      - typescript-resolvers
+    config:
+      avoidOptionals: true
+      useIndexSignature: true
