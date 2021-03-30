@@ -18,11 +18,11 @@
     "typeRoots": ["node_modules/@types", "src/@types"],
     "baseUrl": "src",
     "paths": {
-      "@src/*":["*"], 
-    },
+      "@src/*": ["*"]
+    }
   },
-  
+
   "files": ["src/@types/graphql.d.ts"],
-  "exclude": ["node_modules"],
   "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "src/types.ts"]
 }

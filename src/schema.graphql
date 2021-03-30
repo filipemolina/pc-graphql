@@ -83,6 +83,15 @@ type ApiDocument {
   type: DocumentType!
 }
 
+input DocumentInput {
+  name: String!
+  parentMenssage: String!
+  attendeeQuestionIds: [String!]!
+  signeeQuestionIds: [String!]!
+  organizationId: String!
+  type: DocumentType!
+}
+
 type Organization {
   id: ID!
   name: String!
@@ -104,4 +113,8 @@ type ApiOrganization {
 type Query {
   organizations: [Organization!]!
   documents(organizationId: ID!): [Document!]!
+}
+
+type Mutation {
+  createDocument(document: DocumentInput!): Document!
 }
