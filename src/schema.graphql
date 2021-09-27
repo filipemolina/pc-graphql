@@ -63,24 +63,204 @@ type ApiField {
   equationSectionIds: [String!]!
 }
 
+type PaymentProvider {
+  id: ID!
+  name: String
+  isDefault: Boolean!
+  isActive: Boolean!
+}
+
+type Fee {
+  id: ID!
+  effectiveDate: String
+  providerRate: Float!
+  providerFlat: Float!
+  providerSchoolCollectsToParentPaysRate: Float!
+  permissionClickRate: Float!
+  permissionClickFlat: Float!
+  permissionClickSchoolCollectsToParentPaysRate: Float!
+  paymentProvider: PaymentProvider
+  permissionClickPerTicketFlat: Float!
+  permissionClickPerTicketFlat: Float!
+  feeZone: Int!
+}
+
+type ApiFee {
+  id: ID!
+  effectiveDate: String
+  providerRate: Float!
+  providerFlat: Float!
+  providerSchoolCollectsToParentPaysRate: Float!
+  permissionClickRate: Float!
+  permissionClickFlat: Float!
+  permissionClickSchoolCollectsToParentPaysRate: Float!
+  paymentProvider: String
+  permissionClickPerTicketFlat: Float!
+  permissionClickPerTicketFlat: Float!
+  feeZone: Int!
+}
+
+type DocumentVersion {
+  id: ID!
+  name: String
+  endDate: String
+  shortenedUrl: String
+  status: Int!
+  startDate: String
+  redirectUrl: String
+  redirectMessage: String
+  sendReminders: Boolean!
+  allowMultipleChildrenOnOneOrder: Boolean!
+  parentMessage: String
+  requiresPermission: Boolean!
+  isGeneralSignup: Boolean!
+  fee: Fee
+  attachmentsPermissions: Int!
+  signeeFormPermissions: Int!
+  attendeeFormPermissions: Int!
+  ticketPermissions: Int!
+  permissionSlipPermissions: Int!
+  confirmationMessagePermissions: Int!
+  privateOrganizerQuestions: String
+  allowOnlinePaymentsOnly: Boolean!
+  remindersSent: Boolean!
+  lastUpdated: String!
+  responseCutOffDate: String
+  version: Int!
+  dateCreated: String!
+  information: String
+  publicOrganizerQuestions: [Question!]!
+  oldPublicOrganizerAnswers: [Question!]!
+  template: ApiDocumentVersion
+  description: String
+  oldPrivateOrganizerAnswers: String
+  sequentialId: Int!
+  respondentMustSelectATicket: Boolean!
+  affirmativePermission: String
+  negativePermission: String
+  createdBy: Profile
+  lastUpdatedBy: Profile
+  manualPaymentText: String
+  customResponseStatusPermissions: Int!
+  headsUpDisplaySelectedQuestions: String
+  headsUpDisplayPermissions: Int!
+  responseApproversPermissions: Int!
+  document: Document!
+  latestDocument: Document
+  activeDocument: Document
+  restrictResponses: Boolean!
+  attendeeForm: String
+  signeeForm: String
+  dataConverted: Boolean!
+  attendeeQuestions: [Question!]!
+  privateQuestions: [Question!]!
+  publicQuestions: [Question!]!
+  signeeQuestions: [Question!]!
+  customStatuses: [Question!]!
+}
+
+type ApiDocumentVersion {
+  id: ID!
+  name: String
+  endDate: String
+  shortenedUrl: String
+  status: Int!
+  startDate: String
+  redirectUrl: String
+  redirectMessage: String
+  sendReminders: Boolean!
+  allowMultipleChildrenOnOneOrder: Boolean!
+  parentMessage: String
+  requiresPermission: Boolean!
+  isGeneralSignup: Boolean!
+  fee: Fee
+  attachmentsPermissions: Int!
+  signeeFormPermissions: Int!
+  attendeeFormPermissions: Int!
+  ticketPermissions: Int!
+  permissionSlipPermissions: Int!
+  confirmationMessagePermissions: Int!
+  privateOrganizerQuestions: String
+  allowOnlinePaymentsOnly: Boolean!
+  remindersSent: Boolean!
+  lastUpdated: String!
+  responseCutOffDate: String
+  version: Int!
+  dateCreated: String!
+  information: String
+  publicOrganizerQuestionIds: [String!]!
+  oldPublicOrganizerAnswerIds: [String!]!
+  template: String
+  description: String
+  oldPrivateOrganizerAnswers: String
+  sequentialId: Int!
+  respondentMustSelectATicket: Boolean!
+  affirmativePermission: String
+  negativePermission: String
+  createdById: String
+  lastUpdatedById: String
+  manualPaymentText: String
+  customResponseStatusPermissions: Int!
+  headsUpDisplaySelectedQuestions: String
+  headsUpDisplayPermissions: Int!
+  responseApproversPermissions: Int!
+  documentId: String!
+  latestDocumentId: String
+  activeDocumentId: String
+  restrictResponses: Boolean!
+  attendeeForm: String
+  signeeForm: String
+  dataConverted: Boolean!
+  attendeeQuestions: [String!]!
+  privateQuestions: [String!]!
+  publicQuestions: [String!]!
+  signeeQuestions: [String!]!
+  customStatuses: [String!]!
+}
+
 type Document {
   id: ID!
-  name: String!
-  parentMenssage: String!
-  attendeeQuestions: [ApiQuestion!]!
-  signeeQuestions: [ApiQuestion!]!
   organization: ApiOrganization!
-  type: DocumentType!
+  hidden: Boolean!
+  configuration: Int!
+  isSystemTemplate: Boolean!
+  rosterSyncExpireDate: String
+  sendInvitationOnRosterSynce: Boolean!
+  hidePublicLinks: Boolean!
+  organizationNamePermissions: Boolean!
+  formNamePermissions: Int!
+  attendeeNamePermissions: Int!
+  customTextPermissions: Int!
+  messageBodyPermissions: Int!
+  permissionLastEditedOn: String!
+  logicalOperator: Int!
+  useOrganizationBranding: Boolean!
+  disableResponseEditing: Boolean!
+  rosterToMultipleGuardians: Boolean!
+  showContactForm: Boolean!
+  documentVersions: [DocumentVersion!]!
 }
 
 type ApiDocument {
   id: ID!
-  name: String!
-  parentMenssage: String!
-  attendeeQuestionIds: [String!]!
-  signeeQuestionIds: [String!]!
   organizationId: String!
-  type: DocumentType!
+  hidden: Boolean!
+  configuration: Int!
+  isSystemTemplate: Boolean!
+  rosterSyncExpireDate: String
+  sendInvitationOnRosterSynce: Boolean!
+  hidePublicLinks: Boolean!
+  organizationNamePermissions: Boolean!
+  formNamePermissions: Int!
+  attendeeNamePermissions: Int!
+  customTextPermissions: Int!
+  messageBodyPermissions: Int!
+  permissionLastEditedOn: String!
+  logicalOperator: Int!
+  useOrganizationBranding: Boolean!
+  disableResponseEditing: Boolean!
+  rosterToMultipleGuardians: Boolean!
+  showContactForm: Boolean!
 }
 
 input DocumentInput {
@@ -92,22 +272,88 @@ input DocumentInput {
   type: DocumentType!
 }
 
+type Contact {
+  id: ID!
+  name: String
+  phone: String
+  email: String
+  role: String
+  organizationId: String
+  sisContactOrganizationId: String
+}
+
+input ContactInput {
+  name: String
+  phone: String
+  email: String
+  role: String
+  organizationId: String
+  sisContactOrganizationId: String
+}
+
+type Address {
+  id: ID!
+  address1: String
+  address2: String
+  postal: String
+  city: String
+  timezone: String
+  country: String
+  subdivision: String
+}
+
+input AddressInput {
+  address1: String
+  address2: String
+  postal: String
+  city: String
+  timezone: String
+  country: String
+  subdivision: String
+}
+
 type Organization {
   id: ID!
-  name: String!
-  nameForCommunications: String!
+  name: String
   numberOfStudents: Int
-  divisionName: String!
+  divisionName: String
+  disclaimer: String
+  dateCreated: String!
+  isEnabeld: Boolean!
+  webPageUrl: String
+  formsRequireApproval: Boolean!
+  address: Address 
+  contact: Contact
+  parent: OrganizationApi
+  logoMetadataId: String
+  domain: String
+  stripeBillingId: String
+  trialEnding: Boolean!
+  apiKey: String
+  nameForCommunications: String
   documents: [ApiDocument!]!
 }
 
 type ApiOrganization {
   id: ID!
-  name: String!
-  nameForCommunications: String!
+  name: String
   numberOfStudents: Int
-  divisionName: String!
-  documentIds: [String!]!
+  divisionName: String
+  disclaimer: String
+  dateCreated: String!
+  isEnabeld: Boolean!
+  webPageUrl: String
+  formsRequireApproval: Boolean!
+  address: Address
+  contact: Contact
+  parentId: String
+  logoMetadataId: String
+  domain: String
+  stripeBillingId: String
+  trialEnding: Boolean!
+  apiKey: String
+  nameForCommunications: String
+  documentIds: [ApiDocument!]!
 }
 
 type Query {
