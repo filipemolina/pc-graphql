@@ -1,47 +1,13 @@
-import { mock_data } from '@src/mock_data';
+import { ContextType } from '@src/api';
+import { DocumentsModel, OrganizationsModel } from '@src/models';
 import { Resolvers } from '../types';
-import {
-  getDocumentsByOrganizationId,
-  getOrganizationById,
-  getQuestionsById,
-} from '../utils';
 
-const QueryResolvers: Resolvers = {
+const QueryResolvers: Resolvers<ContextType> = {
   Query: {
-    organizations: () => {
-      const { organizations, documents } = mock_data;
-
-      return organizations.map((organization) => ({
-        ...organization,
-        documentIds: undefined,
-        documents: getDocumentsByOrganizationId(documents, organization.id),
-        __typename: 'Organization',
-      }));
-    },
-    documents: (_parent, { organizationId }) => {
-      const { documents, organizations, questions } = mock_data;
-
-      return documents
-        .filter((apiDocument) => apiDocument.organizationId === organizationId)
-        .map((apiDocument) => ({
-          ...apiDocument,
-          organizationId: undefined,
-          attendeeQuestionIds: undefined,
-          signeeQuestionIds: undefined,
-          organization:
-            getOrganizationById(organizations, apiDocument.organizationId) ||
-            organizations[0],
-          attendeeQuestions: getQuestionsById(
-            questions,
-            apiDocument.attendeeQuestionIds
-          ),
-          signeeQuestions: getQuestionsById(
-            questions,
-            apiDocument.signeeQuestionIds
-          ),
-          __typename: 'Document',
-        }));
-    },
+    Organization: (_parent, { organizationId }, context) =>
+      OrganizationsModel.getOrganizationById(context, organizationId),
+    Documents: (_parent, { organizationId }, context) =>
+      DocumentsModel.getDocumentsForOrganization(context, organizationId),
   },
 };
 

@@ -37,8 +37,13 @@
   "dependencies": {
     "@types/uuid": "^8.3.0",
     "apollo-server": "^2.21.1",
+    "dataloader": "^2.0.0",
+    "datasource-sql": "^1.5.0",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0",
+    "knex": "^0.95.11",
+    "mssql": "^7.2.1",
+    "tedious": "^12.2.0",
     "uuid": "^8.3.2"
   }
 }

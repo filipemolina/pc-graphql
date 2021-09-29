@@ -5,6 +5,10 @@ enum DocumentType {
   PROCESS_TEMPLATE
 }
 
+enum OrganizationType {
+  District
+}
+
 type Question {
   id: ID!
   name: String!
@@ -81,7 +85,6 @@ type Fee {
   permissionClickSchoolCollectsToParentPaysRate: Float!
   paymentProvider: PaymentProvider
   permissionClickPerTicketFlat: Float!
-  permissionClickPerTicketFlat: Float!
   feeZone: Int!
 }
 
@@ -96,8 +99,13 @@ type ApiFee {
   permissionClickSchoolCollectsToParentPaysRate: Float!
   paymentProvider: String
   permissionClickPerTicketFlat: Float!
-  permissionClickPerTicketFlat: Float!
   feeZone: Int!
+}
+
+type Profile {
+  id: ID!
+  name: String
+  email: String
 }
 
 type DocumentVersion {
@@ -219,57 +227,71 @@ type ApiDocumentVersion {
 }
 
 type Document {
-  id: ID!
-  organization: ApiOrganization!
-  hidden: Boolean!
-  configuration: Int!
-  isSystemTemplate: Boolean!
-  rosterSyncExpireDate: String
-  sendInvitationOnRosterSynce: Boolean!
-  hidePublicLinks: Boolean!
-  organizationNamePermissions: Boolean!
-  formNamePermissions: Int!
-  attendeeNamePermissions: Int!
-  customTextPermissions: Int!
-  messageBodyPermissions: Int!
-  permissionLastEditedOn: String!
-  logicalOperator: Int!
-  useOrganizationBranding: Boolean!
-  disableResponseEditing: Boolean!
-  rosterToMultipleGuardians: Boolean!
-  showContactForm: Boolean!
-  documentVersions: [DocumentVersion!]!
+  Id: ID!
+  Hidden: Boolean!
+  Configuration: Int!
+  IsSystemTemplate: Boolean!
+  RosterSyncExpiryDate: String
+  SendInvitationOnRosterSync: Boolean!
+  HidePublicLinks: Boolean!
+  OrganizationNamePermissions: Int!
+  FormNamePermissions: Int!
+  AttendeeNamePermissions: Int!
+  CustomTextPermissions: Int!
+  MessageBodyPermissions: Int!
+  PermissionsLastEditedOn: String!
+  PermissionsLastEditedBy: Profile
+  LogicalOperator: Int!
+  UseOrganizationBranding: Boolean!
+  DisableResponseEditing: Boolean!
+  RosterToMultipleGuardians: Boolean!
+  ShowContactForm: Boolean!
 }
 
 type ApiDocument {
-  id: ID!
-  organizationId: String!
-  hidden: Boolean!
-  configuration: Int!
-  isSystemTemplate: Boolean!
-  rosterSyncExpireDate: String
-  sendInvitationOnRosterSynce: Boolean!
-  hidePublicLinks: Boolean!
-  organizationNamePermissions: Boolean!
-  formNamePermissions: Int!
-  attendeeNamePermissions: Int!
-  customTextPermissions: Int!
-  messageBodyPermissions: Int!
-  permissionLastEditedOn: String!
-  logicalOperator: Int!
-  useOrganizationBranding: Boolean!
-  disableResponseEditing: Boolean!
-  rosterToMultipleGuardians: Boolean!
-  showContactForm: Boolean!
+  Id: ID!
+  Organization_Id: String!
+  Hidden: Boolean!
+  Configuration: Int!
+  IsSystemTemplate: Boolean!
+  RosterSyncExpiryDate: String
+  SendInvitationOnRosterSync: Boolean!
+  HidePublicLinks: Boolean!
+  OrganizationNamePermissions: Int!
+  FormNamePermissions: Int!
+  AttendeeNamePermissions: Int!
+  CustomTextPermissions: Int!
+  MessageBodyPermissions: Int!
+  PermissionsLastEditedOn: String!
+  PermissionsLastEditedBy_Id: String
+  LogicalOperator: Int!
+  UseOrganizationBranding: Boolean!
+  DisableResponseEditing: Boolean!
+  RosterToMultipleGuardians: Boolean!
+  ShowContactForm: Boolean!
 }
 
 input DocumentInput {
-  name: String!
-  parentMenssage: String!
-  attendeeQuestionIds: [String!]!
-  signeeQuestionIds: [String!]!
-  organizationId: String!
-  type: DocumentType!
+  Id: ID!
+  Organization_Id: String
+  Hidden: Boolean!
+  Configuration: Int!
+  IsSystemTemplate: Boolean!
+  RosterSyncExpiryDate: String
+  SendInvitationOnRosterSync: Boolean!
+  HidePublicLinks: Boolean!
+  OrganizationNamePermissions: Int!
+  FormNamePermissions: Int!
+  AttendeeNamePermissions: Int!
+  CustomTextPermissions: Int!
+  MessageBodyPermissions: Int!
+  PermissionsLastEditedOn: String!
+  PermissionsLastEditedBy_Id: String
+  LogicalOperator: Int!
+  UseOrganizationBranding: Boolean!
+  DisableResponseEditing: Boolean!
+  RosterToMultipleGuardians: Boolean!
+  ShowContactForm: Boolean!
 }
 
 type Contact {
@@ -292,14 +314,14 @@ input ContactInput {
 }
 
 type Address {
-  id: ID!
-  address1: String
-  address2: String
-  postal: String
-  city: String
-  timezone: String
-  country: String
-  subdivision: String
+  Id: ID!
+  Address1: String
+  Address2: String
+  Postal: String
+  City: String
+  Timezone: String
+  Country: String
+  Subdivision: String
 }
 
 input AddressInput {
@@ -313,54 +335,66 @@ input AddressInput {
 }
 
 type Organization {
-  id: ID!
-  name: String
-  numberOfStudents: Int
-  divisionName: String
-  disclaimer: String
-  dateCreated: String!
-  isEnabeld: Boolean!
-  webPageUrl: String
-  formsRequireApproval: Boolean!
-  address: Address 
-  contact: Contact
-  parent: OrganizationApi
-  logoMetadataId: String
-  domain: String
-  stripeBillingId: String
-  trialEnding: Boolean!
-  apiKey: String
-  nameForCommunications: String
-  documents: [ApiDocument!]!
+  Id: ID!
+  Name: String
+  NumberOfStudents: Int
+  DivisionName: String
+  Disclaimer: String
+  DateCreated: String!
+  IsEnabled: Boolean!
+  WebPageUrl: String
+  FormsRequireApproval: Boolean!
+  Address: Address
+  Contact: Contact
+  Parent: ApiOrganization
+  LogoMetadata_Id: String
+  Domain: String
+  StripeBillingId: String
+  TrialEnding: Boolean!
+  ApiKey: String
+  EmailSettings_Id: String
+  CreatedBy: Profile
+  NameForCommunications: String
+  PaymentSettings_Id: String
+  EditionId: Int!
+  SequentialId: Int!
+  OrganizationTypeCode: OrganizationType
+  Documents: [Document!]!
 }
 
 type ApiOrganization {
-  id: ID!
-  name: String
-  numberOfStudents: Int
-  divisionName: String
-  disclaimer: String
-  dateCreated: String!
-  isEnabeld: Boolean!
-  webPageUrl: String
-  formsRequireApproval: Boolean!
-  address: Address
-  contact: Contact
-  parentId: String
-  logoMetadataId: String
-  domain: String
-  stripeBillingId: String
-  trialEnding: Boolean!
-  apiKey: String
-  nameForCommunications: String
-  documentIds: [ApiDocument!]!
+  Id: ID!
+  Name: String
+  NumberOfStudents: Int
+  DivisionName: String
+  Disclaimer: String
+  DateCreated: String!
+  IsEnabled: Boolean!
+  WebPageUrl: String
+  FormsRequireApproval: Boolean!
+  Address_Id: String
+  Contact_Id: String
+  Parent_Id: String
+  LogoMetadata_Id: String
+  Domain: String
+  StripeBillingId: String
+  TrialEnding: Boolean!
+  ApiKey: String
+  EmailSettings_Id: String
+  CreatedBy_Id: String
+  NameForCommunications: String
+  PaymentSettings_Id: String
+  EditionId: Int!
+  SequentialId: Int!
+  OrganizationTypeCode: OrganizationType
+  Documents: [String!]!
 }
 
 type Query {
-  organizations: [Organization!]!
-  documents(organizationId: ID!): [Document!]!
+  Organization(organizationId: ID!): Organization
+  Documents(organizationId: ID!): [Document!]!
 }
 
 type Mutation {
-  createDocument(document: DocumentInput!): Document!
+  CreateDocument(document: DocumentInput!): Document!
 }

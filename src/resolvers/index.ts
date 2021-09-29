@@ -1,8 +1,9 @@
 import { QueryResolvers } from './Query';
-import { Resolvers } from '@src/types';
 import { MutationResolvers } from './Mutation';
+import { OrganizationResolvers } from './Organization';
 
-const resolvers: Resolvers = {
+const resolvers = {
+  ...OrganizationResolvers,
   ...QueryResolvers,
   ...MutationResolvers,
 };
