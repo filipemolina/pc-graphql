@@ -19,11 +19,10 @@ const addRelatedColumns = (
 
 type QueryResult = Record<string, {} | null>;
 
-const convertResult = (
-  result: QueryResult,
+const getConvertResultFunction = (
   relatedTables: RelatedTablesDictionary,
   tablePrefix = 'Related'
-) => {
+) => (result: QueryResult) => {
   const relatedAliases = Object.keys(relatedTables);
   const keys = Object.keys(result);
 
@@ -51,4 +50,4 @@ const convertResult = (
   return relatedObjects;
 };
 
-export { addRelatedColumns, convertResult };
+export { addRelatedColumns, getConvertResultFunction };

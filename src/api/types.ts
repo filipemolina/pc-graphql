@@ -1,5 +1,5 @@
 export type RelatedTable = {
-  tableName: string;
+  relatedTableName: string;
   foreignKey: string;
   columns: string[];
 };

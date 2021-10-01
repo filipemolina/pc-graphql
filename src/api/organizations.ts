@@ -1,15 +1,16 @@
 import { databaseConfig } from '@src/db';
 import { ApiOrganization, Organization } from '@src/types';
+import DataLoader from 'dataloader';
 import { SQLDataSource } from 'datasource-sql';
 import { RelatedTablesDictionary } from './types';
-import { addRelatedColumns, convertResult } from './utils';
+import { addRelatedColumns, getConvertResultFunction } from './utils';
 
 class OrganizationsDataSource extends SQLDataSource {
   tableName = 'dbo.Organizations';
 
   relatedTables: RelatedTablesDictionary = {
     Address: {
-      tableName: 'dbo.Addresses',
+      relatedTableName: 'dbo.Addresses',
       foreignKey: 'Address_Id',
       columns: [
         'Id',
@@ -23,7 +24,7 @@ class OrganizationsDataSource extends SQLDataSource {
       ],
     },
     Contact: {
-      tableName: 'dbo.Contacts',
+      relatedTableName: 'dbo.Contacts',
       foreignKey: 'Contact_Id',
       columns: [
         'Id',
@@ -36,7 +37,7 @@ class OrganizationsDataSource extends SQLDataSource {
       ],
     },
     Parent: {
-      tableName: 'dbo.Organizations',
+      relatedTableName: 'dbo.Organizations',
       foreignKey: 'Parent_Id',
       columns: [
         'Id',
@@ -66,7 +67,7 @@ class OrganizationsDataSource extends SQLDataSource {
       ],
     },
     CreatedBy: {
-      tableName: 'security.Profiles',
+      relatedTableName: 'security.Profiles',
       foreignKey: 'CreatedBy_Id',
       columns: [
         'Id',
@@ -82,42 +83,50 @@ class OrganizationsDataSource extends SQLDataSource {
     },
   };
 
-  private getOrgDefinition = () =>
-    this.db
-      .from<ApiOrganization>(this.tableName)
-      .leftJoin(
-        'dbo.Addresses as Address',
-        `${this.tableName}.Address_Id`,
-        'Address.Id'
-      )
-      .leftJoin(
-        'dbo.Contacts as Contact',
-        `${this.tableName}.Contact_Id`,
-        'Contact.Id'
-      )
-      .leftJoin(
-        `${this.tableName} as Parent`,
-        `${this.tableName}.Parent_Id`,
-        'Parent.Id'
-      )
-      .leftJoin(
-        'security.Profiles as CreatedBy',
-        `${this.tableName}.CreatedBy_Id`,
-        'CreatedBy.Id'
-      )
-      .select(
-        `${this.tableName}.*`,
+  private getTables = () => {
+    const query = this.db.from<ApiOrganization>(this.tableName);
 
-        ...addRelatedColumns(this.relatedTables)
+    const relatedTables = Object.keys(this.relatedTables);
+
+    return relatedTables.reduce((query, alias) => {
+      const { relatedTableName, foreignKey } = this.relatedTables[alias];
+
+      query.leftJoin(
+        `${relatedTableName} as ${alias}`,
+        `${this.tableName}.${foreignKey}`,
+        `${alias}.Id`
       );
 
-  byId = async (orgId: string) => {
-    const result: Organization = await this.getOrgDefinition()
-      .where(`${this.tableName}.Id`, orgId)
-      .first();
-
-    return convertResult(result, this.relatedTables);
+      return query;
+    }, query);
   };
+
+  private getBaseQuery = () =>
+    this.getTables().select(
+      `${this.tableName}.*`,
+
+      ...addRelatedColumns(this.relatedTables)
+    );
+
+  private convertResults = getConvertResultFunction(this.relatedTables);
+
+  private organizationLoader = new DataLoader(
+    async (ids: Readonly<string[]>) => {
+      const results = await this.getBaseQuery().whereIn(
+        `${this.tableName}.Id`,
+        ids
+      );
+
+      const resultsDict = results.reduce((acc, cur) => {
+        acc[cur.Id] = cur;
+        return acc;
+      }, {} as Record<string, Record<string, {}>>);
+
+      return ids.map((id) => this.convertResults(resultsDict[id]) || null);
+    }
+  );
+
+  byId = async (orgId: string) => this.organizationLoader.load(orgId);
 }
 
 const OrganizationsApi = new OrganizationsDataSource(databaseConfig);
