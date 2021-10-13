@@ -1,5 +1,9 @@
 import { ContextType } from '@src/api';
-import { DocumentsModel, OrganizationsModel } from '@src/models';
+import {
+  DocumentsModel,
+  DocumentVersionsModel,
+  OrganizationsModel,
+} from '@src/models';
 import { Resolvers } from '../types';
 
 const QueryResolvers: Resolvers<ContextType> = {
@@ -8,6 +12,8 @@ const QueryResolvers: Resolvers<ContextType> = {
       OrganizationsModel.getOrganizationById(context, organizationId),
     Documents: (_parent, { organizationId }, context) =>
       DocumentsModel.getDocumentsForOrganization(context, organizationId),
+    DocumentVersion: (_parent, { docVersionId }, context) =>
+      DocumentVersionsModel.getDocumentVersionById(context, docVersionId),
   },
 };
 

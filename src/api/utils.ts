@@ -22,7 +22,9 @@ type QueryResult = Record<string, {} | null>;
 const getConvertResultFunction = (
   relatedTables: RelatedTablesDictionary,
   tablePrefix = 'Related'
-) => (result: QueryResult) => {
+) => (result: QueryResult | null) => {
+  if (!result) return null;
+
   const relatedAliases = Object.keys(relatedTables);
   const keys = Object.keys(result);
 

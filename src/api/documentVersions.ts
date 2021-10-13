@@ -1,74 +1,50 @@
 import { cacheTTL } from '@src/db';
-import { ApiOrganization } from '@src/types';
+import { ApiDocumentVersion } from '@src/types';
 import DataLoader from 'dataloader';
 import { SQLDataSource } from 'datasource-sql';
 import { RelatedTablesDictionary } from './types';
 import { addRelatedColumns, getConvertResultFunction } from './utils';
 
-class OrganizationsApi extends SQLDataSource {
-  tableName = 'dbo.Organizations';
+class DocumentVersionsApi extends SQLDataSource {
+  tableName = 'dbo.DocumentVersions';
 
   relatedTables: RelatedTablesDictionary = {
-    Address: {
-      relatedTableName: 'dbo.Addresses',
-      foreignKey: 'Address_Id',
+    Fee: {
+      relatedTableName: 'dbo.Fees',
+      foreignKey: 'Fee_Id',
       columns: [
         'Id',
-        'Address1',
-        'Address2',
-        'Postal',
-        'City',
-        'TimeZone',
-        'Country',
-        'Subdivision',
-      ],
-    },
-    Contact: {
-      relatedTableName: 'dbo.Contacts',
-      foreignKey: 'Contact_Id',
-      columns: [
-        'Id',
-        'Name',
-        'Phone',
-        'Email',
-        'Role',
-        'Organization_Id',
-        'SisContactOrganization_Id',
-      ],
-    },
-    Parent: {
-      relatedTableName: 'dbo.Organizations',
-      foreignKey: 'Parent_Id',
-      columns: [
-        'Id',
-        'Name',
-        'NumberOfStudents',
-        'DivisionName',
-        'Disclaimer',
-        'DateCreated',
-        'IsEnabled',
-        'WebPageUrl',
-        'FormsRequireApproval',
-        'Address_Id',
-        'Contact_Id',
-        'Parent_Id',
-        'LogoMetadata_Id',
-        'Domain',
-        'StripeBillingId',
-        'TrialEnding',
-        'ApiKey',
-        'EmailSettings_Id',
-        'CreatedBy_Id',
-        'NameForCommunications',
-        'PaymentSettings_Id',
-        'EditionId',
-        'SequentialId',
-        'OrganizationTypeCode',
+        'EffectiveDate',
+        'ProviderRate',
+        'ProviderFlat',
+        'ProviderSchoolCollectsToParentPaysRate',
+        'PermissionClickRate',
+        'PermissionClickFlat',
+        'PermissionClickSchoolCollectsToParentPaysRate',
+        'PaymentProvider_Id',
+        'PermissionClickPerTicketFlat',
+        'ProviderPerOrderFlatWhenUsingPerTicketFlat',
+        'FeeZone',
       ],
     },
     CreatedBy: {
-      relatedTableName: 'security.Profiles',
       foreignKey: 'CreatedBy_Id',
+      relatedTableName: 'Security.Profiles',
+      columns: [
+        'Id',
+        'IsDefault',
+        'DateCreated',
+        'User_Id',
+        'Organization_Id',
+        'Status',
+        'Notifications',
+        'ExternalId',
+        'Role',
+      ],
+    },
+    LastUpdatedBy: {
+      foreignKey: 'LastUpdatedBy_Id',
+      relatedTableName: 'Security.Profiles',
       columns: [
         'Id',
         'IsDefault',
@@ -84,7 +60,7 @@ class OrganizationsApi extends SQLDataSource {
   };
 
   private getRelatedTables = () => {
-    const query = this.db.from<ApiOrganization>(this.tableName);
+    const query = this.db.from<ApiDocumentVersion>(this.tableName);
 
     const relatedTables = Object.keys(this.relatedTables);
 
@@ -110,11 +86,13 @@ class OrganizationsApi extends SQLDataSource {
 
   private convertResults = getConvertResultFunction(this.relatedTables);
 
-  private organizationLoader = new DataLoader(
+  private documentVersionLoader = new DataLoader(
     async (ids: Readonly<string[]>) => {
       const results = await this.getBaseQuery()
         .whereIn(`${this.tableName}.Id`, ids)
         .cache(cacheTTL);
+
+      console.log('=================== DOCUMENT VERSION LOADER', ids);
 
       const resultsDict = results.reduce((acc, cur) => {
         acc[cur.Id] = cur;
@@ -125,7 +103,7 @@ class OrganizationsApi extends SQLDataSource {
     }
   );
 
-  byId = async (orgId: string) => this.organizationLoader.load(orgId);
+  byId = (id: string) => this.documentVersionLoader.load(id);
 }
 
-export { OrganizationsApi };
+export { DocumentVersionsApi };

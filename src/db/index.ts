@@ -10,4 +10,6 @@ const databaseConfig = {
   },
 };
 
-export { databaseConfig };
+const cacheTTL = 20; // time in seconds
+
+export { databaseConfig, cacheTTL };
