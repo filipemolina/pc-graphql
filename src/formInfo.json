@@ -1,0 +1,720 @@
+{
+  "title": "Giant Form with Everything",
+  "organization": {
+    "id": "61c60e57-c23d-45ff-98ac-cd845ed360f3",
+    "name": "Molina&#39;s District",
+    "hasSafePay": false,
+    "logoUri": ""
+  },
+  "multipleAttendees": true,
+  "requiresPermission": true,
+  "isGeneralSignup": false,
+  "signeeForm": [
+    {
+      "id": "e65a6935-82ff-5742-a236-45ce8ab3aea3",
+      "type": "address",
+      "collapsable": false,
+      "question": {
+        "id": "ba726578-2e52-5029-bc15-248940bae2ee",
+        "name": "address",
+        "isRequired": false,
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": ""
+      },
+      "fields": [
+        {
+          "id": "62c265c2-9f60-55f7-8a5c-342dde23fa70",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "354fb68e-8c21-5c4f-ac40-90dcc83f5ec0",
+            "name": "streetAddress",
+            "isRequired": false,
+            "labelText": "Street Address",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "Street Address"
+          },
+          "readonly": false
+        },
+        {
+          "id": "09c16b70-02c1-52d6-93a5-4c6ca6aa53bf",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "6a437aa6-0862-5288-9e17-8afab742c9ca",
+            "name": "streetAddressLine2",
+            "isRequired": false,
+            "labelText": "Street Address Line 2",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "Street Address Line 2"
+          },
+          "readonly": false
+        },
+        {
+          "id": "9e997201-108f-55f8-8c87-06e0561908ab",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "7a1746ca-d6a2-556d-9425-a230f8e4c7d0",
+            "name": "city",
+            "isRequired": false,
+            "labelText": "City",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "City"
+          },
+          "readonly": false
+        },
+        {
+          "id": "86fae7a0-1236-5ad5-97dc-40820a503fea",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "e81887f0-60a5-5f10-a873-6c1915b39308",
+            "name": "stateProv",
+            "isRequired": false,
+            "labelText": "State/Province",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "State/Province"
+          },
+          "readonly": false
+        },
+        {
+          "id": "b8d68c0f-1f2c-5570-a446-6f139aa812d4",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "256ddc7e-81f5-5dcc-adca-653b4983a0db",
+            "name": "postalZip",
+            "isRequired": false,
+            "labelText": "Postal / Zip Code",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "Postal / Zip Code"
+          },
+          "readonly": false
+        }
+      ],
+      "readonly": false
+    },
+    {
+      "id": "5dd5628f-08be-536a-b191-70f1be5348c9",
+      "type": "date",
+      "collapsable": false,
+      "question": {
+        "id": "88c7b807-ded7-5b19-8ca0-73ae021a9be0",
+        "name": "date",
+        "isRequired": false,
+        "labelText": "Select a date",
+        "characterLimit": -1,
+        "format": "MM/DD/YYYY",
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Select a date"
+      },
+      "readonly": false
+    },
+    {
+      "id": "d12e3d64-394d-54d8-b58c-3c8e639fa529",
+      "type": "select",
+      "collapsable": false,
+      "question": {
+        "id": "91eecf0c-6427-5398-9fac-f2e1b44f0152",
+        "name": "select",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Please, select one of the following options:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "valueOptions": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Please, select one of the following options:"
+      },
+      "readonly": false
+    },
+    {
+      "id": "cf8bbe9e-871c-59b9-bdfa-d66d353bd6fe",
+      "type": "multiline",
+      "collapsable": false,
+      "question": {
+        "id": "be664e33-607b-5450-8297-20b3e620c494",
+        "name": "multiline",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Paragraph question:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Paragraph question:"
+      },
+      "readonly": false
+    },
+    {
+      "id": "92d0816d-8772-5d43-8ce5-f59cac0b9080",
+      "type": "phonenumber",
+      "collapsable": false,
+      "question": {
+        "id": "cead03c3-67e5-53c0-8527-3405e026327f",
+        "name": "phone-number",
+        "isRequired": false,
+        "labelText": "Phone Number",
+        "characterLimit": -1,
+        "format": "(111) 111-1111",
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Phone Number"
+      },
+      "readonly": false
+    },
+    {
+      "id": "10244feb-cccb-5848-97fc-8d636fd08bf7",
+      "type": "rating",
+      "collapsable": false,
+      "question": {
+        "id": "fc90c022-77ff-5c87-9861-61db9eb1d590",
+        "name": "rating",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Please, give your rating!&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Please, give your rating!"
+      },
+      "readonly": false
+    },
+    {
+      "id": "caf8b848-102f-5aa3-b46d-e6376a2ca422",
+      "type": "multiselect",
+      "collapsable": false,
+      "question": {
+        "id": "135aa564-1fd8-57b0-93f6-f93ecb9a0af7",
+        "name": "multiselect",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Please, select at most 2 options:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "valueOptions": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4",
+          "Option 5"
+        ],
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Please, select at most 2 options:"
+      },
+      "readonly": false
+    },
+    {
+      "id": "4efeb158-decb-50e4-95ca-47174c854d0f",
+      "type": "singleline",
+      "collapsable": false,
+      "question": {
+        "id": "64c73d1a-8958-57c4-8ea1-1ddb7f864231",
+        "name": "singleline",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Short answer, please:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Short answer, please:"
+      },
+      "readonly": false
+    },
+    {
+      "id": "c3a28bee-4d1b-5749-bc55-ed339ccedd72",
+      "type": "time",
+      "collapsable": false,
+      "question": {
+        "id": "ba119a2b-2212-5e88-9ed5-c994f874225d",
+        "name": "time",
+        "isRequired": false,
+        "labelText": "Select a time",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Select a time"
+      },
+      "readonly": false
+    },
+    {
+      "id": "f17be51c-517d-5b94-a3aa-0701338dad91",
+      "type": "upload",
+      "collapsable": false,
+      "question": {
+        "id": "600150e8-7b9a-5563-9526-c4270a4b8135",
+        "name": "upload",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Upload your picture:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Upload your picture:"
+      },
+      "readonly": false
+    },
+    {
+      "id": "6dcf48d8-3bf6-5d26-b876-00e25d4a73e4",
+      "type": "yesno",
+      "collapsable": false,
+      "question": {
+        "id": "eabc467c-0ea1-5143-8292-9ee1eae5f6bd",
+        "name": "yesno",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Are you sure about that picture?&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Are you sure about that picture?"
+      },
+      "readonly": false
+    },
+    {
+      "id": "bc6b7823-d675-5676-8945-9d0c1a7e91d7",
+      "type": "repeatable-question",
+      "collapsable": false,
+      "question": {
+        "id": "0dec9f74-ff47-5733-83a0-5c10322bd646",
+        "name": "repeatable-question",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Please, list the names of your family members:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Please, list the names of your family members:"
+      },
+      "fields": [
+        {
+          "id": "ce690bbc-22f1-5634-b056-bf134d14cf31",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "da92cd64-bc50-57ad-9dca-e334f77823a6",
+            "name": "singleline",
+            "isRequired": false,
+            "labelText": "&lt;p&gt;Family member name:&lt;/p&gt;",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "Family member name:"
+          },
+          "readonly": false
+        }
+      ],
+      "readonly": false
+    },
+    {
+      "id": "6f8d1de6-258b-5c97-8757-10850165d5cc",
+      "type": "multi-field-conditional",
+      "collapsable": false,
+      "question": {
+        "id": "8b82990f-fa91-5939-ae7e-d96f0ef1273b",
+        "name": "multi-field-conditional",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Are you sure?&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Are you sure?"
+      },
+      "fields": [
+        {
+          "id": "cc7ff317-1339-5c30-8602-37dd43710732",
+          "type": "field-container",
+          "collapsable": false,
+          "fields": [
+            {
+              "id": "7468a777-0b94-5f6a-9e57-b616a1390a70",
+              "type": "singleline",
+              "collapsable": false,
+              "question": {
+                "id": "89397370-6a5d-57fb-823c-96d3b03e13ae",
+                "name": "singleline",
+                "isRequired": false,
+                "labelText": "&lt;p&gt;Why?&lt;/p&gt;",
+                "characterLimit": -1,
+                "valueType": "text",
+                "hidden": false,
+                "sortValueOptions": false,
+                "minEntries": -1,
+                "maxEntries": -1,
+                "plainLabel": "Why?"
+              },
+              "readonly": false
+            }
+          ],
+          "readonly": false
+        },
+        {
+          "id": "6fef171a-6e8f-5a1d-b919-4a22463499d5",
+          "type": "field-container",
+          "collapsable": false,
+          "fields": [
+            {
+              "id": "6585cac5-3126-5836-a07e-f1f0553ef31a",
+              "type": "singleline",
+              "collapsable": false,
+              "question": {
+                "id": "52a31d8f-4853-584a-87bb-c878aeaf3949",
+                "name": "singleline",
+                "isRequired": false,
+                "labelText": "&lt;p&gt;Great answer! Now let us know why:&lt;/p&gt;",
+                "characterLimit": -1,
+                "valueType": "text",
+                "hidden": false,
+                "sortValueOptions": false,
+                "minEntries": -1,
+                "maxEntries": -1,
+                "plainLabel": "Great answer! Now let us know why:"
+              },
+              "readonly": false
+            }
+          ],
+          "readonly": false
+        }
+      ],
+      "readonly": false
+    },
+    {
+      "id": "099185f8-0b60-5e66-bfad-e61975bcc099",
+      "type": "select-conditional",
+      "collapsable": false,
+      "question": {
+        "id": "63eb4c3d-7300-5872-8a37-3eec1794ba88",
+        "name": "select-conditional",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Choose a fruit:&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "valueOptions": ["Avocado", "Banana", "Coconut"],
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Choose a fruit:"
+      },
+      "fields": [
+        {
+          "id": "cde00e19-3169-5409-84ef-30291cd5d534",
+          "type": "field-container",
+          "collapsable": false,
+          "fields": [
+            {
+              "id": "787c05fc-402f-55dd-804d-45d3638ff2ee",
+              "type": "select",
+              "collapsable": false,
+              "question": {
+                "id": "759ac1a7-3820-5061-b236-e34159d9e7e8",
+                "name": "select",
+                "isRequired": false,
+                "labelText": "&lt;p&gt;Toast or dessert?&lt;/p&gt;",
+                "characterLimit": -1,
+                "valueType": "text",
+                "valueOptions": ["Toast", "Dessert"],
+                "hidden": false,
+                "sortValueOptions": false,
+                "minEntries": -1,
+                "maxEntries": -1,
+                "plainLabel": "Toast or dessert?"
+              },
+              "readonly": false
+            }
+          ],
+          "readonly": false
+        },
+        {
+          "id": "1e5051b4-59e7-57d2-ac3b-fd4f6f126782",
+          "type": "field-container",
+          "collapsable": false,
+          "fields": [
+            {
+              "id": "a759fc11-7e11-5f89-ad54-318960c70d9b",
+              "type": "singleline",
+              "collapsable": false,
+              "question": {
+                "id": "703da78e-442f-584c-8b37-34e20b4463bb",
+                "name": "singleline",
+                "isRequired": false,
+                "labelText": "&lt;p&gt;Tell us more:&lt;/p&gt;",
+                "characterLimit": -1,
+                "valueType": "text",
+                "hidden": false,
+                "sortValueOptions": false,
+                "minEntries": -1,
+                "maxEntries": -1,
+                "plainLabel": "Tell us more:"
+              },
+              "readonly": false
+            }
+          ],
+          "readonly": false
+        },
+        {
+          "id": "4914e3b8-ed1f-573a-82c2-fb3d9d314a62",
+          "type": "field-container",
+          "collapsable": false,
+          "fields": [
+            {
+              "id": "c6a44d59-4057-5d6a-9cf4-8e5e5d26dc3d",
+              "type": "yesno",
+              "collapsable": false,
+              "question": {
+                "id": "d06fa53a-8b27-56e9-9148-9719a92ec236",
+                "name": "yesno",
+                "isRequired": false,
+                "labelText": "&lt;p&gt;Are you crazy?&lt;/p&gt;",
+                "characterLimit": -1,
+                "valueType": "text",
+                "hidden": false,
+                "sortValueOptions": false,
+                "minEntries": -1,
+                "maxEntries": -1,
+                "plainLabel": "Are you crazy?"
+              },
+              "readonly": false
+            }
+          ],
+          "readonly": false
+        }
+      ],
+      "readonly": false
+    },
+    {
+      "id": "b97911e0-f312-5a55-8bb2-b71b7835a442",
+      "type": "header",
+      "collapsable": false,
+      "question": {
+        "id": "c1b1633a-55a5-52b5-907b-43e0b6f0245a",
+        "name": "header",
+        "isRequired": false,
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": ""
+      },
+      "fields": [
+        {
+          "id": "0e6314cc-9a50-58e9-b521-d00bc695f433",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "d5d747aa-23f9-505f-bc43-76ba84bf3f55",
+            "name": "header",
+            "isRequired": false,
+            "placeHolderText": "Final Heading for the Form",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": ""
+          },
+          "readonly": false
+        },
+        {
+          "id": "aa8053a4-508b-507c-933f-14f94a519326",
+          "type": "singleline",
+          "collapsable": false,
+          "question": {
+            "id": "c86aaf3a-116f-55d8-8ccd-b1cded6680ac",
+            "name": "subheader",
+            "isRequired": false,
+            "placeHolderText": "Final subheading for the form",
+            "characterLimit": -1,
+            "valueType": "text",
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": ""
+          },
+          "readonly": false
+        }
+      ],
+      "readonly": false
+    }
+  ],
+  "attendeeForm": [
+    {
+      "id": "f077282d-8afb-5486-8eb5-c7bc2e62b53b",
+      "type": "yesno",
+      "collapsable": false,
+      "question": {
+        "id": "2eda35cb-579d-5b6a-b6cf-7dddc35fc37d",
+        "name": "yesno",
+        "isRequired": false,
+        "labelText": "&lt;p&gt;Does this child play Magic the Gathering or use other similar heavy drugs?&lt;/p&gt;",
+        "characterLimit": -1,
+        "valueType": "text",
+        "hidden": false,
+        "sortValueOptions": false,
+        "minEntries": -1,
+        "maxEntries": -1,
+        "plainLabel": "Does this child play Magic the Gathering or use other similar heavy drugs?"
+      },
+      "readonly": false
+    }
+  ],
+  "organizerFormAnswers": [],
+  "formInformation": "&lt;p&gt;This is the form information text for this form!&lt;/p&gt;",
+  "tickets": [
+    {
+      "id": "5d9b2c78-4023-46b0-9281-85b4fd8351d7",
+      "name": "Free Ticket!",
+      "typeCode": "Free",
+      "minimumQuantity": 0,
+      "maximumQuantity": 500,
+      "price": 0.0,
+      "passAlongFees": false,
+      "ticketForm": [
+        {
+          "id": "4611ee25-ccb1-506a-b78d-b9ab065a9486",
+          "type": "select",
+          "collapsable": false,
+          "question": {
+            "id": "2e5e4c9b-a5ca-5535-a226-26bf157771dd",
+            "name": "select",
+            "isRequired": false,
+            "labelText": "&lt;p&gt;Select your lunch:&lt;/p&gt;",
+            "characterLimit": -1,
+            "valueType": "text",
+            "valueOptions": ["Hot dogs", "Pizza", "Mac and Cheese"],
+            "hidden": false,
+            "sortValueOptions": false,
+            "minEntries": -1,
+            "maxEntries": -1,
+            "plainLabel": "Select your lunch:"
+          },
+          "readonly": false
+        }
+      ],
+      "groupKey": "e17db9dc-49d7-4e59-bff9-9efdbef7bcc6",
+      "inventory": { "isLimited": false, "purchased": 0 }
+    }
+  ],
+  "fileAttachments": [
+    {
+      "friendlyName": "school-logo",
+      "isPdf": false,
+      "contentUri": "https://click.pc.localtest.me/attachment/ca/387e12b8-088a-43f4-9f9a-105a8837536c/content",
+      "thumbnailUri": "https://click.pc.localtest.me/attachment/ca/387e12b8-088a-43f4-9f9a-105a8837536c/thumbnail",
+      "printUri": "https://click.pc.localtest.me/attachment/ca/387e12b8-088a-43f4-9f9a-105a8837536c/print",
+      "downloadUri": "https://click.pc.localtest.me/attachment/ca/387e12b8-088a-43f4-9f9a-105a8837536c/download",
+      "fileType": "image/jpeg"
+    }
+  ],
+  "linkAttachments": [],
+  "showContactForm": false,
+  "groupKey": "0177d276-bfdd-4d4c-b548-b08841fed49d",
+  "respondentMustSelectATicket": false,
+  "passAlongFees": false,
+  "googleApiKey": "AIzaSyCZS2eeUvIrBHT3k2fvHvQxQlLH8upT4DA",
+  "countryCode": "ca",
+  "currencyCode": "CAD",
+  "isRostered": false,
+  "hasEditableResponsesFeature": true,
+  "hasApprovers": false,
+  "responseSource": 2,
+  "respondingToOrganizationId": "61c60e57-c23d-45ff-98ac-cd845ed360f3",
+  "disableResponseEditing": true,
+  "uris": {
+    "referralUri": "https://public.pc.localtest.me/referral",
+    "privacyPolicyUri": "https://public.pc.localtest.me/privacy-policy",
+    "termsOfUseUri": "https://public.pc.localtest.me/terms-of-service",
+    "contactUsUri": "https://public.pc.localtest.me/contact-us",
+    "publicSiteUri": "https://public.pc.localtest.me",
+    "safePayEstimateUri": "https://payments.pc.localtest.me/api/checkout/estimate",
+    "resumableUri": "/form/f91ae8b1-ab9f-4c58-b879-89899e73af9f/ca/response/resume",
+    "paymentConfigurationUri": "/form/f91ae8b1-ab9f-4c58-b879-89899e73af9f/ca/payment",
+    "acceptTermsUri": "/response/f91ae8b1-ab9f-4c58-b879-89899e73af9f/ca/accept",
+    "linkToRestartResponseUri": "https://app.pc.localtest.me/response/d702f8b6-9636-40ae-bd4c-e3a4cef65c1b/ca",
+    "thumbnailUri": "/media/content/ca/thumbnail",
+    "uploadUri": "/media/ca/upload",
+    "removeUploadUri": "/media/ca/remove",
+    "downloadUri": "/media/ca/download",
+    "printUri": "/media/ca/print",
+    "viewUri": "/media/content/ca/get",
+    "responseIsAuthorizedUri": "/response/d702f8b6-9636-40ae-bd4c-e3a4cef65c1b/ca/authorize-response",
+    "saveSigneeAnswerUri": "/answers/ca/save-signee",
+    "saveAttendeeAnswerUri": "/answers/ca/save-attendee",
+    "deleteSigneeAnswerUri": "/answers/ca/delete-signee",
+    "deleteAttendeeAnswerUri": "/answers/ca/delete-attendee",
+    "saveSigneeUri": "/signee/ca/save-signee",
+    "createResponseUri": "/form/f91ae8b1-ab9f-4c58-b879-89899e73af9f/ca/create-public-response",
+    "editAttendeeUri": "/attendee/ca/edit",
+    "removeAttendeeUri": "/attendee/ca/remove",
+    "reserveTicketUri": "/ticket/ca/reserve-attendee-ticket",
+    "removeTicketUri": "/ticket/ca/remove-attendee-ticket",
+    "sendFeedbackUri": "/response/f91ae8b1-ab9f-4c58-b879-89899e73af9f/ca/notify/feedback",
+    "selectResponseUri": "/form/f91ae8b1-ab9f-4c58-b879-89899e73af9f/ca/response/select"
+  }
+}

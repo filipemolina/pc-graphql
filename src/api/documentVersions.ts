@@ -3,7 +3,7 @@ import { ApiDocumentVersion } from '@src/types';
 import DataLoader from 'dataloader';
 import { SQLDataSource } from 'datasource-sql';
 import { RelatedTablesDictionary } from './types';
-import { addRelatedColumns, getConvertResultFunction } from './utils';
+import { addRelatedColumns, getConvertResultFunction } from '@src/utils';
 
 class DocumentVersionsApi extends SQLDataSource {
   tableName = 'dbo.DocumentVersions';
@@ -91,8 +91,6 @@ class DocumentVersionsApi extends SQLDataSource {
       const results = await this.getBaseQuery()
         .whereIn(`${this.tableName}.Id`, ids)
         .cache(cacheTTL);
-
-      console.log('=================== DOCUMENT VERSION LOADER', ids);
 
       const resultsDict = results.reduce((acc, cur) => {
         acc[cur.Id] = cur;

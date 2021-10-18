@@ -7,3 +7,5 @@ export type RelatedTable = {
 export type RelatedTablesDictionary = {
   [key: string]: RelatedTable;
 };
+
+export type QueryResult = Record<string, {} | null>;

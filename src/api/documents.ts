@@ -12,8 +12,6 @@ class DocumentsApi extends SQLDataSource {
       .whereIn(`${this.tableName}.Id`, ids)
       .cache(cacheTTL);
 
-    console.log('=================== DOCUMENT LOADER', ids);
-
     const resultsDict = results.reduce((acc, cur) => {
       acc[cur.Id] = cur;
       return acc;

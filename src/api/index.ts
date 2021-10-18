@@ -2,11 +2,13 @@ import { DocumentsApi } from './documents';
 import { OrganizationsApi } from './organizations';
 import { DocumentVersionsApi } from './documentVersions';
 import { databaseConfig } from '../db';
+import { QuestionsApi } from './questions';
 
 const dataSources = () => ({
   Documents: new DocumentsApi(databaseConfig),
   Organizations: new OrganizationsApi(databaseConfig),
   DocumentVersions: new DocumentVersionsApi(databaseConfig),
+  Questions: new QuestionsApi(databaseConfig),
 });
 
 type ContextType = {

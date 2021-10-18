@@ -9,62 +9,72 @@ enum OrganizationType {
   District
 }
 
+enum FieldType {
+  SECTION
+  HEADER
+  SINGLELINE
+  MULTILINE
+  YESNO
+  DROPDOWN
+  DATE
+  TIME
+  DESCRIPTIVETEXT
+  UPLOAD
+  PHONENUMBER
+  SELECTMULTIPLE
+  SELECT
+  MULTISELECT
+  ADDRESS
+  DIVIDER
+  RATING
+  CONDITIONAL
+  MULTI_FIELD_CONDITIONAL
+  FIELD_CONTAINER
+  SELECT_CONDITIONAL
+  REPEATABLE_QUESTION
+  INTEGRATED_DATA
+  EQUATIONS
+  POSTAL_ZIP
+}
+
 type Question {
   id: ID!
-  name: String!
+  name: String
   isRequired: Boolean!
-  labelText: String!
-  reportingLabel: String!
-  placeHolderText: String!
-  dataValue: String!
-  characterLimit: Int!
-  format: String!
-  valueType: String!
-  valueOptions: [String!]!
+  labelText: String
+  reportingLabel: String
+  placeHolderText: String
+  dataValue: String
+  characterLimit: Int
+  format: String
+  valueType: String
+  valueOptions: [String!]
   hidden: Boolean!
   sortValueOptions: Boolean!
-  pinnedValueOptions: [String!]!
+  pinnedValueOptions: [String!]
   minEntries: Int
   maxEntries: Int
-  supportsApprovers: Boolean!
+  supportsApprovers: Boolean
+  plainLabel: String
 }
 
 type ApiQuestion {
-  id: ID!
-  name: String!
-  isRequired: Boolean!
-  labelText: String!
-  reportingLabel: String!
-  placeHolderText: String!
-  dataValue: String!
-  characterLimit: Int!
-  format: String!
-  valueType: String!
-  valueOptions: [String!]!
-  hidden: Boolean!
-  sortValueOptions: Boolean!
-  pinnedValueOptions: [String!]!
-  minEntries: Int
-  maxEntries: Int
-  supportsApprovers: Boolean!
+  Id: ID!
+  Json: String!
 }
 
 type Field {
   id: ID!
+  type: FieldType!
   collapsable: Boolean!
-  question: ApiQuestion!
-  readOnly: Boolean!
-  approversEnabled: Boolean
-  equationSections: [ApiQuestion!]!
+  readonly: Boolean!
+  question: Question
+  fields: [Field!]
+  equationSections: [Question!]
 }
 
 type ApiField {
-  id: ID!
-  collapsable: Boolean!
-  questionId: String!
-  readOnly: Boolean!
-  approversEnabled: Boolean
-  equationSectionIds: [String!]!
+  fields: [Field!]!
 }
 
 type PaymentProvider {
@@ -164,11 +174,11 @@ type DocumentVersion {
   AttendeeForm: String
   SigneeForm: String
   DataConverted: Boolean!
-  AttendeeQuestions: [Question!]!
-  PrivateQuestions: [Question!]!
-  PublicQuestions: [Question!]!
-  SigneeQuestions: [Question!]!
-  CustomStatuses: [Question!]!
+  AttendeeQuestions: [Field!]!
+  PrivateQuestions: [Field!]!
+  PublicQuestions: [Field!]!
+  SigneeQuestions: [Field!]!
+  CustomStatuses: [Field!]!
   WorkflowConverted: Boolean!
   DocumentWorkflow: Workflow
   ResponseWorkflow: Workflow
@@ -226,11 +236,11 @@ type ApiDocumentVersion {
   AttendeeForm: String
   SigneeForm: String
   DataConverted: Boolean!
-  AttendeeQuestions_Id: [String!]!
-  PrivateQuestions_Id: [String!]!
-  PublicQuestions_Id: [String!]!
-  SigneeQuestions_Id: [String!]!
-  CustomStatuses_Id: [String!]!
+  AttendeeQuestions_Id: String
+  PrivateQuestions_Id: String
+  PublicQuestions_Id: String
+  SigneeQuestions_Id: String
+  CustomStatuses_Id: String
   WorkflowConverted: Boolean!
   DocumentWorkflow_Id: String
   ResponseWorkflow_Id: String

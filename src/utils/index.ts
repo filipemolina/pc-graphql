@@ -1,3 +1,3 @@
-// import { convertApiOrganization } from './typeConversions';
+import { addRelatedColumns, getConvertResultFunction } from './database';
 
-// export { convertApiOrganization };
+export { addRelatedColumns, getConvertResultFunction };

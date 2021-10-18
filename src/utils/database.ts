@@ -1,4 +1,8 @@
-import { RelatedTable, RelatedTablesDictionary } from './types';
+import {
+  QueryResult,
+  RelatedTable,
+  RelatedTablesDictionary,
+} from '@src/api/types';
 
 const addRelatedColumns = (
   relatedTables: Record<string, RelatedTable>,
@@ -16,8 +20,6 @@ const addRelatedColumns = (
 
   return relatedFields;
 };
-
-type QueryResult = Record<string, {} | null>;
 
 const getConvertResultFunction = (
   relatedTables: RelatedTablesDictionary,

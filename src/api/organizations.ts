@@ -3,7 +3,7 @@ import { ApiOrganization } from '@src/types';
 import DataLoader from 'dataloader';
 import { SQLDataSource } from 'datasource-sql';
 import { RelatedTablesDictionary } from './types';
-import { addRelatedColumns, getConvertResultFunction } from './utils';
+import { addRelatedColumns, getConvertResultFunction } from '@src/utils';
 
 class OrganizationsApi extends SQLDataSource {
   tableName = 'dbo.Organizations';

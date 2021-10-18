@@ -1,0 +1,31 @@
+const FieldTypeResolvers = {
+  FieldType: {
+    SECTION: 'section',
+    HEADER: 'header',
+    SINGLELINE: 'singleline',
+    MULTILINE: 'multiline',
+    YESNO: 'yesno',
+    DROPDOWN: 'dropdown',
+    DATE: 'date',
+    TIME: 'time',
+    DESCRIPTIVETEXT: 'descriptivetext',
+    UPLOAD: 'upload',
+    PHONENUMBER: 'phonenumber',
+    SELECTMULTIPLE: 'selectmultiple',
+    SELECT: 'select',
+    MULTISELECT: 'multiselect',
+    ADDRESS: 'address',
+    DIVIDER: 'divider',
+    RATING: 'rating',
+    CONDITIONAL: 'conditional',
+    MULTI_FIELD_CONDITIONAL: 'multi-field-conditional',
+    FIELD_CONTAINER: 'field-container',
+    SELECT_CONDITIONAL: 'select-conditional',
+    REPEATABLE_QUESTION: 'repeatable-question',
+    INTEGRATED_DATA: 'integrated-data',
+    EQUATIONS: 'equations',
+    POSTAL_ZIP: 'postal-zip',
+  },
+};
+
+export { FieldTypeResolvers };
