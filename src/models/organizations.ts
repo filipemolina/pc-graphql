@@ -11,14 +11,10 @@ const OrganizationsModel = {
     return ((result as unknown) as Organization) || null;
   },
 
-  getParentOrganization: async (
+  getOrganizationByDocumentVersionId: (
     { dataSources: { Organizations } }: ContextType,
-    parentId?: string | null
-  ) => {
-    const result = parentId ? await Organizations.byId(parentId) : null;
-
-    return result || null;
-  },
+    documentVersionId: string
+  ) => {},
 };
 
 export { OrganizationsModel };

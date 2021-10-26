@@ -1,6 +1,7 @@
+import DataLoader from 'dataloader';
+
 import { cacheTTL } from '@src/db';
 import { ApiDocumentVersion } from '@src/types';
-import DataLoader from 'dataloader';
 import { SQLDataSource } from 'datasource-sql';
 import { RelatedTablesDictionary } from './types';
 import { addRelatedColumns, getConvertResultFunction } from '@src/utils';
@@ -78,7 +79,7 @@ class DocumentVersionsApi extends SQLDataSource {
   };
 
   private getBaseQuery = () =>
-    this.getRelatedTables().select(
+    this.getRelatedTables().select<ApiDocumentVersion[]>(
       `${this.tableName}.*`,
 
       ...addRelatedColumns(this.relatedTables)
@@ -95,13 +96,30 @@ class DocumentVersionsApi extends SQLDataSource {
       const resultsDict = results.reduce((acc, cur) => {
         acc[cur.Id] = cur;
         return acc;
-      }, {} as Record<string, Record<string, {}>>);
+      }, {} as Record<string, ApiDocumentVersion>);
 
       return ids.map((id) => this.convertResults(resultsDict[id]) || null);
     }
   );
 
   byId = (id: string) => this.documentVersionLoader.load(id);
+
+  latestBySequentialId = async (sequentialId: number) => {
+    const result = await this.getBaseQuery()
+      .where('SequentialId', sequentialId)
+      .first()
+      .cache(cacheTTL);
+
+    const documentId = result ? result.Document_Id : undefined;
+
+    const latestForm = await this.getBaseQuery()
+      .where('Document_Id', documentId)
+      .orderBy('Version', 'desc')
+      .first()
+      .cache(cacheTTL);
+
+    return latestForm ? this.convertResults(latestForm) : null;
+  };
 }
 
 export { DocumentVersionsApi };

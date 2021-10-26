@@ -1,25 +1,21 @@
 import { ContextType } from '@src/api';
-import { DocumentsModel, DocumentVersionsModel } from '@src/models';
+import {
+  AttachmentsModel,
+  DocumentsModel,
+  DocumentVersionsModel,
+} from '@src/models';
 import { QuestionModel } from '@src/models/questions';
-import { ApiDocumentVersion } from '@src/types';
+import { Document, DocumentVersionResolvers, Resolvers } from '@src/types';
 
-type DocumentVersionsResolverType = {
-  DocumentVersion: Record<
-    string,
-    (
-      parent: ApiDocumentVersion,
-      args: {},
-      context: ContextType
-    ) => Promise<{} | null> | null
-  >;
-};
-
-const DocumentVersionResolvers: DocumentVersionsResolverType = {
+const DocumentVersionResolvers: Resolvers<ContextType> = {
   DocumentVersion: {
     Template: (parent, _args, context) =>
       DocumentVersionsModel.getDocumentVersionById(context, parent.Template_Id),
     Document: (parent, _args, context) =>
-      DocumentsModel.getDocumentById(context, parent.Document_Id),
+      DocumentsModel.getDocumentById(
+        context,
+        parent.Document_Id
+      ) as Promise<Document>,
     Latest: (parent, _args, context) =>
       parent.Latest_Id
         ? DocumentsModel.getDocumentById(context, parent.Latest_Id)
@@ -36,6 +32,8 @@ const DocumentVersionResolvers: DocumentVersionsResolverType = {
       QuestionModel.getQuestionsById(context, parent.PublicQuestions_Id),
     SigneeQuestions: (parent, _args, context) =>
       QuestionModel.getQuestionsById(context, parent.SigneeQuestions_Id),
+    Attachments: (parent, _args, context) =>
+      AttachmentsModel.getAttachmentsByDocumentVersionId(context, parent.Id),
   },
 };
 

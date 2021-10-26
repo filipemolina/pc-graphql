@@ -37,6 +37,41 @@ enum FieldType {
   POSTAL_ZIP
 }
 
+enum CountryCode {
+  CA
+  INT
+}
+
+type ContentMetadata {
+  Id: ID!
+  Name: String
+  MimeType: String
+  SizeInBites: Float!
+}
+
+type ApiAttachment {
+  Id: ID!
+  DocumentVersion_Id: String
+  FriendlyName: String
+  IsPrimary: Boolean!
+  ContentMetadata_Id: String
+  ProcessTemplate_Id: String
+  UploadedBy_Id: String
+}
+
+type Attachment {
+  Id: ID!
+  FriendlyName: String
+  IsImage: Boolean!
+  IsPdf: Boolean!
+  ContentUri: String!
+  ThumbnailUri: String!
+  PrintUri: String!
+  DownloadUri: String!
+  FileType: String!
+  ReadableFileSize: String
+}
+
 type Question {
   id: ID!
   name: String
@@ -153,7 +188,8 @@ type DocumentVersion {
   Information: String
   PublicOrganizerQuestionIds: [String!]!
   OldPublicOrganizerAnswerIds: [String!]!
-  Template: ApiDocumentVersion
+  Template_Id: String
+  Template: DocumentVersion
   Description: String
   OldPrivateOrganizerAnswers: String
   SequentialId: Int!
@@ -167,13 +203,21 @@ type DocumentVersion {
   HeadsUpDisplaySelectedQuestions: String
   HeadsUpDisplayPermissions: Int!
   ResponseApproversPermissions: Int!
-  Document: Document
+  Document_Id: String!
+  Document: Document!
+  Latest_Id: String
   Latest: Document
+  Active_Id: String
   Active: Document
   RestrictResponses: Boolean!
   AttendeeForm: String
   SigneeForm: String
   DataConverted: Boolean!
+  AttendeeQuestions_Id: String
+  PrivateQuestions_Id: String
+  PublicQuestions_Id: String
+  SigneeQuestions_Id: String
+  CustomStatuses_Id: String
   AttendeeQuestions: [Field!]!
   PrivateQuestions: [Field!]!
   PublicQuestions: [Field!]!
@@ -182,6 +226,7 @@ type DocumentVersion {
   WorkflowConverted: Boolean!
   DocumentWorkflow: Workflow
   ResponseWorkflow: Workflow
+  Attachments: [Attachment!]
 }
 
 type ApiDocumentVersion {
@@ -248,6 +293,8 @@ type ApiDocumentVersion {
 
 type Document {
   Id: ID!
+  Organization_Id: String!
+  Organization: Organization!
   Hidden: Boolean!
   Configuration: Int!
   IsSystemTemplate: Boolean!
@@ -292,7 +339,6 @@ type ApiDocument {
 }
 
 input DocumentInput {
-  Id: ID!
   Organization_Id: String
   Hidden: Boolean!
   Configuration: Int!
@@ -414,6 +460,7 @@ type Query {
   Organization(organizationId: ID!): Organization
   Documents(organizationId: ID!): [Document!]!
   DocumentVersion(docVersionId: ID!): DocumentVersion
+  Form(hashedId: String!): DocumentVersion
 }
 
 type Mutation {

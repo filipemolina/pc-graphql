@@ -41,6 +41,7 @@
     "datasource-sql": "^1.5.0",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0",
+    "hashids": "^2.2.8",
     "knex": "^0.95.11",
     "mssql": "^7.2.1",
     "tedious": "^12.2.0",
