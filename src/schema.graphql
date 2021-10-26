@@ -45,7 +45,7 @@ enum CountryCode {
 type ContentMetadata {
   Id: ID!
   Name: String
-  MimeType: String
+  MimeType: String!
   SizeInBites: Float!
 }
 
@@ -54,7 +54,7 @@ type ApiAttachment {
   DocumentVersion_Id: String
   FriendlyName: String
   IsPrimary: Boolean!
-  ContentMetadata_Id: String
+  ContentMetadata_Id: String!
   ProcessTemplate_Id: String
   UploadedBy_Id: String
 }
@@ -70,6 +70,8 @@ type Attachment {
   DownloadUri: String!
   FileType: String!
   ReadableFileSize: String
+  ContentMetadata_Id: String!
+  ContentMetadata: ContentMetadata!
 }
 
 type Question {
