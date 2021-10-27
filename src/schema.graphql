@@ -42,6 +42,51 @@ enum CountryCode {
   INT
 }
 
+type Inventory {
+  Id: ID!
+  IsLimited: Boolean!
+  Quantity: Int!
+}
+
+type ApiTicket {
+  Id: ID!
+  Name: String
+  TypeCode: String
+  MinimumQuantity: Int!
+  MaximumQuantity: Int!
+  MinimumAmountPerOrder: Int!
+  MaximumAmountPerOrder: Int!
+  Price: Float!
+  PassAlongFees: Boolean!
+  GroupKey: String!
+  Inventory: Inventory!
+  DocumentVersion_Id: String!
+}
+
+type Ticket {
+  Id: ID!
+  Name: String
+  TypeCode: String
+  MinimumQuantity: Int!
+  MaximumQuantity: Int!
+  Price: Float!
+  PassAlongFees: Boolean!
+  GroupKey: String!
+  Inventory: Inventory!
+  DocumentVersion_Id: String!
+}
+
+type PublicOrganizerAnswer {
+  Id: ID!
+  QuestionId: String!
+  Value: String
+  DocumentVersion_Id: String!
+  FieldId: String!
+  FileType: String
+  Order: Int
+  LastUpdated: String
+}
+
 type ContentMetadata {
   Id: ID!
   Name: String
@@ -229,6 +274,8 @@ type DocumentVersion {
   DocumentWorkflow: Workflow
   ResponseWorkflow: Workflow
   Attachments: [Attachment!]
+  PublicOrganizerAnswers: [PublicOrganizerAnswer!]
+  Tickets: [Ticket!]
 }
 
 type ApiDocumentVersion {
