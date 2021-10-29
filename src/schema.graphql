@@ -61,6 +61,9 @@ type ApiTicket {
   GroupKey: String!
   Inventory: Inventory!
   DocumentVersion_Id: String!
+  ParentPays: Float
+  SchoolCollects: Float
+  FormQuestions_Id: String
 }
 
 type Ticket {
@@ -74,6 +77,8 @@ type Ticket {
   GroupKey: String!
   Inventory: Inventory!
   DocumentVersion_Id: String!
+  FormQuestions_Id: String
+  FormQuestions: [Field!]
 }
 
 type PublicOrganizerAnswer {

@@ -6,6 +6,7 @@ import { FieldTypeResolvers } from './customTypes/FieldType';
 import { CountryCodeResolver } from './customTypes/CountryCode';
 import { DocumentResolvers } from './Document';
 import { AttachmentResolvers } from './Attachment';
+import { TicketResolvers } from './Ticket';
 
 const resolvers = {
   // Enums
@@ -17,6 +18,7 @@ const resolvers = {
   ...DocumentResolvers,
   ...DocumentVersionResolvers,
   ...AttachmentResolvers,
+  ...TicketResolvers,
 
   // Queries and Mutations
   ...QueryResolvers,

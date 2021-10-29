@@ -19,6 +19,7 @@ class TicketsApi extends SQLDataSource {
     `${this.tableName}.GroupKey`,
     `${this.tableName}.Inventory_Id`,
     `${this.tableName}.DocumentVersion_Id`,
+    `${this.tableName}.FormQuestions_Id`,
   ];
 
   relatedTables: RelatedTablesDictionary = {
@@ -87,8 +88,6 @@ class TicketsApi extends SQLDataSource {
 
         return acc;
       }, {} as Record<string, ApiTicket[]>);
-
-      console.log(results);
 
       return docIds.map((id) =>
         resultsDict[id] ? resultsDict[id].map(this.convertResults) : []
