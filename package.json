@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@types/uuid": "^8.3.0",
+    "apollo-datasource-rest": "^3.4.0",
     "apollo-server": "^2.21.1",
     "dataloader": "^2.0.0",
     "datasource-sql": "^1.5.0",

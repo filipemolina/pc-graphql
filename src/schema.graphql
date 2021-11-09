@@ -392,6 +392,97 @@ type ApiDocument {
   ShowContactForm: Boolean!
 }
 
+type ApiSignee {
+  Id: ID!
+  EmailAddress: String
+  Profile_Id: String
+}
+
+type Signee {
+  Id: ID!
+  EmailAddress: String
+  Profile_Id: String
+  Profile: Profile
+}
+
+type ApiResponse {
+  Id: ID!
+  LastNotificationSent: String
+  Signee_Id: String!
+  Document_Id: String!
+  Organization_Id: String!
+  LastNotificationAttempt: String
+}
+
+type Response {
+  Id: ID!
+  LastNotificationSent: String
+  Signee_Id: String!
+  Signee: Signee!
+  Document_Id: String!
+  Document: Document!
+  Organization_Id: String!
+  Organization: Organization!
+  LastNotificationAttempt: String
+}
+
+type ApiResponseVersion {
+  Id: ID!
+  AcceptConditions: Boolean
+  DateSigned: String
+  Form_Id: String!
+  IpAddress: String
+  CreatedDate: String
+  CancelledDate: String
+  UserAgent: String
+  GuardianFormFilledJSON: String
+  ResponseDocumentHash: String
+  Status: Int!
+  Source: Int!
+  SourceId: String
+  CondensedResponseDocumentHash: String
+  CompletedBy_Id: String
+  IsPrinted: Boolean
+  IsFiled: String!
+  SigneeFirstName: String
+  SigneeLastName: String
+  Version: Float!
+  Response_Id: String!
+  Latest_Id: String
+  Active_Id: String
+  DataConverted: String!
+}
+
+type ResponseVersion {
+  Id: ID!
+  AcceptConditions: Boolean
+  DateSigned: String
+  Form_Id: String!
+  IpAddress: String
+  CreatedDate: String
+  CancelledDate: String
+  UserAgent: String
+  GuardianFormFilledJSON: String
+  ResponseDocumentHash: String
+  Status: Int!
+  Source: Int!
+  SourceId: String
+  CondensedResponseDocumentHash: String
+  CompletedBy_Id: String
+  CompletedBy: Profile
+  IsPrinted: Boolean
+  IsFiled: String!
+  SigneeFirstName: String
+  SigneeLastName: String
+  Version: Float!
+  Response_Id: String!
+  Response: Response!
+  Latest_Id: String
+  Active_Id: String
+  Active: Response
+  DataConverted: String!
+}
+
 input DocumentInput {
   Organization_Id: String
   Hidden: Boolean!
@@ -515,6 +606,7 @@ type Query {
   Documents(organizationId: ID!): [Document!]!
   DocumentVersion(docVersionId: ID!): DocumentVersion
   Form(hashedId: String!): DocumentVersion
+  ResponseVersions(formId: String!): [ResponseVersion!]!
 }
 
 type Mutation {

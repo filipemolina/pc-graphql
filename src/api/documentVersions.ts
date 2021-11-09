@@ -87,7 +87,7 @@ class DocumentVersionsApi extends SQLDataSource {
 
   private convertResults = getConvertResultFunction(this.relatedTables);
 
-  private documentVersionLoader = new DataLoader(
+  private Loader = new DataLoader(
     async (ids: Readonly<string[]>) => {
       const results = await this.getBaseQuery()
         .whereIn(`${this.tableName}.Id`, ids)
@@ -102,7 +102,7 @@ class DocumentVersionsApi extends SQLDataSource {
     }
   );
 
-  byId = (id: string) => this.documentVersionLoader.load(id);
+  byId = (id: string) => this.Loader.load(id);
 
   latestBySequentialId = async (sequentialId: number) => {
     const result = await this.getBaseQuery()

@@ -16,9 +16,9 @@ const DocumentVersionsModel = {
     { dataSources: { DocumentVersions } }: ContextType,
     hashedId: string
   ) => {
-    const decodedId = decodeHash(hashedId) as number;
+    const sequentialId = decodeHash(hashedId) as number;
 
-    const result = DocumentVersions.latestBySequentialId(decodedId);
+    const result = DocumentVersions.latestBySequentialId(sequentialId);
 
     return (result as unknown) as DocumentVersion | null;
   },

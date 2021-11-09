@@ -7,7 +7,7 @@ import { SQLDataSource } from 'datasource-sql';
 class PublicOrganizerAnswersApi extends SQLDataSource {
   tableName = 'dbo.PublicOrganizerAnswers';
 
-  private LoadMultiple = new DataLoader(async (ids: Readonly<string[]>) => {
+  private LoaderByDocId = new DataLoader(async (ids: Readonly<string[]>) => {
     const results = await this.db
       .from<PublicOrganizerAnswer>(this.tableName)
       .select('*')
@@ -23,7 +23,7 @@ class PublicOrganizerAnswersApi extends SQLDataSource {
     return ids.map((id) => resultsDict[id] || []);
   });
 
-  byDocumentVersionId = (id: string) => this.LoadMultiple.load(id);
+  byDocumentVersionId = (id: string) => this.LoaderByDocId.load(id);
 }
 
 export { PublicOrganizerAnswersApi };

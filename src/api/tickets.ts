@@ -74,28 +74,24 @@ class TicketsApi extends SQLDataSource {
 
   private convertResults = getConvertResultFunction(this.relatedTables);
 
-  private MultipleLoader = new DataLoader(
-    async (docIds: Readonly<string[]>) => {
-      const results: ApiTicket[] = await this.getBaseQuery().whereIn(
-        'DocumentVersion_Id',
-        docIds
-      );
+  private LoaderByDocId = new DataLoader(async (docIds: Readonly<string[]>) => {
+    const results: ApiTicket[] = await this.getBaseQuery().whereIn(
+      'DocumentVersion_Id',
+      docIds
+    );
 
-      const resultsDict = docIds.reduce((acc, cur) => {
-        acc[cur] = results.filter(
-          (result) => result.DocumentVersion_Id === cur
-        );
+    const resultsDict = docIds.reduce((acc, cur) => {
+      acc[cur] = results.filter((result) => result.DocumentVersion_Id === cur);
 
-        return acc;
-      }, {} as Record<string, ApiTicket[]>);
+      return acc;
+    }, {} as Record<string, ApiTicket[]>);
 
-      return docIds.map((id) =>
-        resultsDict[id] ? resultsDict[id].map(this.convertResults) : []
-      );
-    }
-  );
+    return docIds.map((id) =>
+      resultsDict[id] ? resultsDict[id].map(this.convertResults) : []
+    );
+  });
 
-  byDocumentVersionId = (id: string) => this.MultipleLoader.load(id);
+  byDocumentVersionId = (id: string) => this.LoaderByDocId.load(id);
 }
 
 export { TicketsApi };

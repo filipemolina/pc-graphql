@@ -67,7 +67,7 @@ class OrganizationsApi extends SQLDataSource {
       ],
     },
     CreatedBy: {
-      relatedTableName: 'security.Profiles',
+      relatedTableName: 'Security.Profiles',
       foreignKey: 'CreatedBy_Id',
       columns: [
         'Id',
@@ -102,7 +102,7 @@ class OrganizationsApi extends SQLDataSource {
   };
 
   private getBaseQuery = () =>
-    this.getRelatedTables().select(
+    this.getRelatedTables().select<ApiOrganization[]>(
       `${this.tableName}.*`,
 
       ...addRelatedColumns(this.relatedTables)
@@ -110,22 +110,20 @@ class OrganizationsApi extends SQLDataSource {
 
   private convertResults = getConvertResultFunction(this.relatedTables);
 
-  private organizationLoader = new DataLoader(
-    async (ids: Readonly<string[]>) => {
-      const results = await this.getBaseQuery()
-        .whereIn(`${this.tableName}.Id`, ids)
-        .cache(cacheTTL);
+  private Loader = new DataLoader(async (ids: Readonly<string[]>) => {
+    const results = await this.getBaseQuery()
+      .whereIn(`${this.tableName}.Id`, ids)
+      .cache(cacheTTL);
 
-      const resultsDict = results.reduce((acc, cur) => {
-        acc[cur.Id] = cur;
-        return acc;
-      }, {} as Record<string, Record<string, {}>>);
+    const resultsDict = results.reduce((acc, cur) => {
+      acc[cur.Id] = cur;
+      return acc;
+    }, {} as Record<string, ApiOrganization>);
 
-      return ids.map((id) => this.convertResults(resultsDict[id]) || null);
-    }
-  );
+    return ids.map((id) => this.convertResults(resultsDict[id]) || null);
+  });
 
-  byId = async (orgId: string) => this.organizationLoader.load(orgId);
+  byId = async (orgId: string) => this.Loader.load(orgId);
 }
 
 export { OrganizationsApi };

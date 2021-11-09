@@ -3,6 +3,7 @@ import {
   DocumentsModel,
   DocumentVersionsModel,
   OrganizationsModel,
+  ResponseVersionsModel,
 } from '@src/models';
 import { Resolvers } from '../types';
 
@@ -19,6 +20,9 @@ const QueryResolvers: Resolvers<ContextType> = {
 
     Form: (_parent, { hashedId }, context) =>
       DocumentVersionsModel.getDocumentVersionByHashedId(context, hashedId),
+
+    ResponseVersions: async (_parent, { formId }, context) =>
+      ResponseVersionsModel.getResponseVersionsByFormId(context, formId),
   },
 };
 

@@ -6,7 +6,7 @@ import { SQLDataSource } from 'datasource-sql';
 class QuestionsApi extends SQLDataSource {
   tableName = 'dbo.QuestionsJson';
 
-  questionLoader = new DataLoader(async (ids: Readonly<string[]>) => {
+  Loader = new DataLoader(async (ids: Readonly<string[]>) => {
     const results = await this.db
       .from<ApiQuestion>(this.tableName)
       .whereIn('Id', ids)
@@ -20,7 +20,7 @@ class QuestionsApi extends SQLDataSource {
     return ids.map((id) => resultsDict[id]);
   });
 
-  byId = (id: string) => this.questionLoader.load(id);
+  byId = (id: string) => this.Loader.load(id);
 }
 
 export { QuestionsApi };

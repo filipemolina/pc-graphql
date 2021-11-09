@@ -7,6 +7,7 @@ import { CountryCodeResolver } from './customTypes/CountryCode';
 import { DocumentResolvers } from './Document';
 import { AttachmentResolvers } from './Attachment';
 import { TicketResolvers } from './Ticket';
+import { ResponseResolvers } from './Response';
 
 const resolvers = {
   // Enums
@@ -19,6 +20,7 @@ const resolvers = {
   ...DocumentVersionResolvers,
   ...AttachmentResolvers,
   ...TicketResolvers,
+  ...ResponseResolvers,
 
   // Queries and Mutations
   ...QueryResolvers,
